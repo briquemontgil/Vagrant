@@ -1,0 +1,21 @@
+#!/bin/bash
+
+## Variables
+HOME=/root
+DOCKERSCRIPT=/vagrant/connectToDocker.sh
+cd $HOME
+
+apt-get update -qq
+apt-get install -yq git docker.io
+
+# intall ns enter to enter our docker container
+docker run -v /usr/local/bin:/target jpetazzo/nsenter
+
+# build our docker container
+docker build -t apache /home/vagrant
+
+# run it in daemon mode
+docker run -d -p 80:80 -t apache /usr/sbin/httpd -D FOREGROUND
+
+# make sure our script is executable
+chmod +x $DOCKERSCRIPT
