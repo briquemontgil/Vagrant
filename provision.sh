@@ -14,7 +14,7 @@ apt-get install -yq git docker.io
 docker build -t apache2 /home/vagrant
 
 # run it in daemon mode
-docker run -d -p 80:80 -v /vagrant:/vagrant1 apache2 /bin/bash
+docker run -d -p 80:80 apache2
 
 # make sure our script is executable
 chmod +x $DOCKERSCRIPT
