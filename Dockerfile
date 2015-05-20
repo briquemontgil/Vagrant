@@ -23,7 +23,6 @@ RUN apt-get -y -q autoremove
 
 #************ Install Packets ******************************************
 
-RUN apt-get install -y -q ssh
 RUN apt-get install -y -q supervisor
 RUN apt-get install -y -q apache2
 
@@ -40,7 +39,7 @@ ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD start.sh /start.sh
 
 #************ Expose ports *********************************************
-EXPOSE 22 80
+EXPOSE 80
 
 #************ Start services *******************************************
 #launch start.sh
